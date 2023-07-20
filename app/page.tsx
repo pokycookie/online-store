@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Carousel from './components/ui/carousel'
-import dummy from '@img/dummy.jpg'
+import banner1 from '@img/banner/banner-sample1.png'
+import banner2 from '@img/banner/banner-sample2.png'
+import banner3 from '@img/banner/banner-sample3.png'
 
 export default function Home() {
   return (
@@ -14,7 +16,7 @@ export default function Home() {
                 key={i}
                 className="object-cover h-full"
                 alt="img"
-                src={dummy}
+                src={sampleBanner[i % 3]}
               />
             )
           })}
@@ -22,3 +24,5 @@ export default function Home() {
     </main>
   )
 }
+
+const sampleBanner = [banner1, banner2, banner3]

@@ -19,9 +19,12 @@ export default function RootLayout({ children }: IProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <Nav />
-        {children}
+        <div className="max-w-7xl">
+          <Header />
+          <Nav />
+          <div className="absolute left-0 w-screen border-b border-gray-200"></div>
+          {children}
+        </div>
       </body>
     </html>
   )

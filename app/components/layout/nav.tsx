@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Nav() {
   return (
-    <nav className="flex items-center w-full h-16 gap-4 p-8 pt-3 pb-3 border-b border-gray-200">
+    <nav className="flex items-center w-full h-16 gap-4 p-8 pt-3 pb-3">
       <p className="p-2 pb-3 font-semibold border-b-2 border-transparent cursor-pointer">
         카테고리
       </p>
