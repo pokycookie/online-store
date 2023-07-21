@@ -30,7 +30,13 @@ export default function Category() {
                 <div className="flex flex-col gap-2">
                   {e.links.map((e, i) => {
                     return (
-                      <Link key={i} href={e.href} className="text-sm">
+                      <Link
+                        key={i}
+                        href={e.href}
+                        className="text-sm"
+                        onFocus={() => setIsHover(true)}
+                        onBlur={() => setIsHover(false)}
+                      >
                         {e.title}
                       </Link>
                     )
