@@ -23,6 +23,12 @@ export default function LabelInput(props: IProps) {
     <div className="relative w-full mb-3">
       <motion.label
         className="absolute left-3"
+        initial={{
+          top: '50%',
+          transform: 'translateY(-50%)',
+          fontSize: '15px',
+          color: 'rgb(156, 163, 175)',
+        }}
         animate={{
           top: onFill ? 0 : '50%',
           transform: `translateY(${onFill ? '30%' : '-50%'})`,
