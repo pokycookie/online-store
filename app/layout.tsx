@@ -22,7 +22,7 @@ export default function RootLayout({ children }: IProps) {
         <div className="w-full max-w-7xl">
           <Header />
           <Nav />
-          <div className="absolute left-0 w-screen border-b border-gray-200"></div>
+          <div className="absolute left-0 border-b border-gray-200 w-vw"></div>
           {children}
         </div>
       </body>
