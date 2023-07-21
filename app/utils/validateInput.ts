@@ -37,12 +37,15 @@ function validatePW(pw: string): IInputInfo | null {
 }
 
 /**
- * @description 특수문자, 숫자, 공백 사용금지
+ * @description 특수문자, 숫자 사용금지
+ * @description 처음과 끝 공백 금지
  */
 function validateName(name: string): IInputInfo | null {
   if (name.trim() === '') {
     return null
-  } else if (/^[^\s][^\d!"#$%&'()*+,-.\/:;<=>?@[\\\]^_`{|}~]+$/.test(name)) {
+  } else if (
+    /^[^\s][^\d!"#$%&'()*+,-.\/:;<=>?@[\\\]^_`{|}~]+[^\s]$/.test(name)
+  ) {
     return { status: 'success', message: '사용할 수 있는 이름입니다' }
   }
   return {
