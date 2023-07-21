@@ -39,13 +39,13 @@ export default function Login() {
           <div className="flex justify-end gap-2">
             <Link
               className="text-sm text-gray-500 hover:text-gray-400"
-              href="/"
+              href="/help/findUser"
             >
               아이디/비밀번호 찾기
             </Link>
             <div className="border-r border-gray-400"></div>
             <Link
-              className="text-sm font-medium text-gray-500 hover:text-gray-400"
+              className="text-sm font-medium text-gray-500 hover:text-blue-600"
               href="/signup"
             >
               회원가입

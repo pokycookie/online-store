@@ -15,13 +15,13 @@ export default function Header() {
       </div>
       <div className="flex gap-4">
         <Link
-          className="text-sm font-medium cursor-pointer whitespace-nowrap"
+          className="text-sm font-medium cursor-pointer whitespace-nowrap hover:text-blue-600"
           href="/login"
         >
           로그인
         </Link>
         <Link
-          className="text-sm font-medium cursor-pointer whitespace-nowrap"
+          className="text-sm font-medium cursor-pointer whitespace-nowrap hover:text-blue-600"
           href="/signup"
         >
           회원가입

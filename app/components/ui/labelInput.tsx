@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react'
+import { ChangeEvent, HTMLInputTypeAttribute, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import styled from '@emotion/styled'
 
@@ -23,10 +23,13 @@ export default function LabelInput(props: IProps) {
   const [onFill, setOnFill] = useState(false)
 
   const blurHandler = () => {
-    if (props.value.trim() === '') {
-      setOnFill(false)
-    }
+    if (props.value.trim() === '') setOnFill(false)
   }
+
+  useEffect(() => {
+    if (props.value.trim() !== '') setOnFill(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="w-full mb-3 ">
