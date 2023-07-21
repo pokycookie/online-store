@@ -20,9 +20,12 @@ export default function Header() {
         >
           로그인
         </Link>
-        <p className="text-sm font-medium cursor-pointer whitespace-nowrap">
+        <Link
+          className="text-sm font-medium cursor-pointer whitespace-nowrap"
+          href="/signup"
+        >
           회원가입
-        </p>
+        </Link>
       </div>
     </header>
   )

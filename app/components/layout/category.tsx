@@ -18,6 +18,7 @@ export default function Category() {
       </p>
       <motion.div
         className="absolute left-0 z-10 flex justify-center w-screen h-auto overflow-hidden bg-slate-100"
+        initial={{ height: 0 }}
         animate={{ height: isHover ? 'fit-content' : 0 }}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}

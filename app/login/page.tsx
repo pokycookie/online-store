@@ -46,7 +46,7 @@ export default function Login() {
             <div className="border-r border-gray-400"></div>
             <Link
               className="text-sm font-medium text-gray-500 hover:text-gray-400"
-              href="/"
+              href="/signup"
             >
               회원가입
             </Link>
