@@ -26,8 +26,8 @@ interface INavLinks {
 }
 
 const navLinks: INavLinks[] = [
-  { title: '베스트', href: '/' },
-  { title: '이벤트', href: '/' },
-  { title: '쿠폰', href: '/' },
-  { title: '최저가', href: '/' },
+  { title: '베스트', href: '/items/etc' },
+  { title: '이벤트', href: '/items/etc' },
+  { title: '쿠폰', href: '/items/etc' },
+  { title: '최저가', href: '/items/etc' },
 ]

@@ -1,11 +1,19 @@
 'use client'
 
 import styled from '@emotion/styled'
-import { ChangeEvent, ClipboardEvent, KeyboardEvent, useState } from 'react'
+import {
+  ChangeEvent,
+  ClipboardEvent,
+  KeyboardEvent,
+  useEffect,
+  useState,
+} from 'react'
 
 interface IProps {
   unit?: string
   separator?: boolean
+  value?: number
+  onChange?: (value: number) => void
 }
 
 export default function IntInput(props: IProps) {
@@ -46,7 +54,14 @@ export default function IntInput(props: IProps) {
 
     setValue(value)
     setInput(value.toLocaleString())
+
+    if (props.onChange) props.onChange(value)
   }
+
+  useEffect(() => {
+    if (props.value !== value) setValue(value)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.value])
 
   return (
     <FocusDiv
