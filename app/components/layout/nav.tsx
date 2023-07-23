@@ -10,7 +10,7 @@ export default function Nav() {
           <Link
             key={i}
             href={e.href}
-            className="flex items-center h-full p-2 pb-3 font-semibold border-b-2 border-transparent hover:border-gray-700"
+            className="flex items-center h-full p-2 pb-3 font-semibold border-b-2 border-transparent hover:border-blue-600 hover:text-blue-600"
           >
             {e.title}
           </Link>

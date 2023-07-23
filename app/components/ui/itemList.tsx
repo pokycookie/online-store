@@ -35,9 +35,9 @@ export default function ItemList(props: IProps) {
           </span>
           {props.originPrice ? (
             <span className="flex items-center gap-2 text-sm font-normal">
-              <p className="text-gray-400 line-through ">
+              <del className="text-gray-400">
                 {props.originPrice?.toLocaleString()}
-              </p>
+              </del>
               <span className="text-blue-600">
                 {(
                   ((props.originPrice - props.price) / props.originPrice) *
