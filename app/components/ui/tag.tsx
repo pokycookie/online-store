@@ -24,7 +24,7 @@ export default function Tag(props: IProps) {
   return (
     <TagButton
       selected={selected}
-      className="p-2 pl-4 pr-4 text-xs border rounded-full w-fit h-fit hover:border-blue-600 shrink-0"
+      className="p-2 pl-4 pr-4 text-xs border rounded-full select-none w-fit h-fit hover:border-blue-600 shrink-0"
       onClick={selectHandler}
     >
       {props.label}

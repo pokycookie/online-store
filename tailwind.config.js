@@ -15,6 +15,9 @@ module.exports = {
       width: {
         vw: 'calc(100vw - (100vw - 100%));',
       },
+      screens: {
+        lt800: { max: '800px' },
+      },
     },
   },
   plugins: [],
