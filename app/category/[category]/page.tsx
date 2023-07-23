@@ -10,7 +10,7 @@ import t5 from '@img/item/cloths/t5.jpg'
 import t6 from '@img/item/cloths/t6.jpg'
 import t7 from '@img/item/cloths/t7.jpg'
 
-export default function ItemPage() {
+export default function CategoryPage() {
   return (
     <main className="p-8">
       <ItemFilter data={filterData} />

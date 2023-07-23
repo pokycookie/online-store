@@ -17,6 +17,7 @@ module.exports = {
       },
       screens: {
         lt800: { max: '800px' },
+        lt550: { max: '550px' },
       },
     },
   },
