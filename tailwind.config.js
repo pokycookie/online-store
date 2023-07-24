@@ -19,6 +19,9 @@ module.exports = {
         lt800: { max: '800px' },
         lt550: { max: '550px' },
       },
+      minWidth: {
+        8: '2rem',
+      },
     },
   },
   plugins: [],

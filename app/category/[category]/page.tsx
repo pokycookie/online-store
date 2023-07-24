@@ -2,13 +2,13 @@ import { IFilterData } from '@/components/ui/itemFilter/filterSection'
 import ItemFilter from '@/components/ui/itemFilter/itemFilter'
 import ItemList from '@/components/ui/itemList'
 
-import t1 from '@img/item/cloths/t1.jpg'
-import t2 from '@img/item/cloths/t2.jpg'
-import t3 from '@img/item/cloths/t3.jpg'
-import t4 from '@img/item/cloths/t4.jpg'
-import t5 from '@img/item/cloths/t5.jpg'
-import t6 from '@img/item/cloths/t6.jpg'
-import t7 from '@img/item/cloths/t7.jpg'
+import t1 from '@img/item/thumb/t1.jpg'
+import t2 from '@img/item/thumb/t2.jpg'
+import t3 from '@img/item/thumb/t3.jpg'
+import t4 from '@img/item/thumb/t4.jpg'
+import t5 from '@img/item/thumb/t5.jpg'
+import t6 from '@img/item/thumb/t6.jpg'
+import t7 from '@img/item/thumb/t7.jpg'
 
 export default function CategoryPage() {
   return (
