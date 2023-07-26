@@ -14,8 +14,8 @@ interface IProps {
 export default function Dropdown(props: IProps) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const selectorREF = useRef(null)
-  const displayREF = useRef(null)
+  const selectorREF = useRef<HTMLDivElement>(null)
+  const displayREF = useRef<HTMLButtonElement>(null)
 
   const openHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!isOpen) {
@@ -60,11 +60,11 @@ export default function Dropdown(props: IProps) {
         </div>
         <div className="h-5 border-l"></div>
         <div className="flex items-center justify-center w-10">
-          <Icon isOpen={isOpen} icon={faAngleDown} className="duration-300" />
+          <Icon open={isOpen} icon={faAngleDown} className="duration-300" />
         </div>
       </button>
       {isOpen ? (
-        <div className="absolute z-10 w-full mt-2 overflow-x-hidden overflow-y-auto bg-white border rounded shadow-lg h-60">
+        <div className="absolute z-20 w-full mt-2 overflow-x-hidden overflow-y-auto bg-white border rounded shadow-lg h-60">
           {props.children}
         </div>
       ) : null}
@@ -72,6 +72,6 @@ export default function Dropdown(props: IProps) {
   )
 }
 
-const Icon = styled(FontAwesomeIcon)<{ isOpen: boolean }>((props) => ({
-  transform: props.isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+const Icon = styled(FontAwesomeIcon)<{ open: boolean }>((props) => ({
+  transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
 }))

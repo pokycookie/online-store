@@ -33,9 +33,9 @@ export default function FilterSection(props: IFilterData) {
         <span className="flex items-center justify-between w-full gap-2 text-sm font-semibold text-white h-9">
           <h2>{props.title}</h2>
           <Icon
+            open={extend}
             className="w-3 duration-200"
             icon={faChevronDown}
-            extend={extend}
           />
         </span>
       </button>
@@ -62,6 +62,6 @@ const TagSection = styled.section<{ extend: boolean }>((props) => ({
   flexWrap: props.extend ? 'wrap' : 'nowrap',
 }))
 
-const Icon = styled(FontAwesomeIcon)<{ extend: boolean }>((props) => ({
-  transform: props.extend ? 'rotate(180deg)' : 'rotate(0deg)',
+const Icon = styled(FontAwesomeIcon)<{ open: boolean }>((props) => ({
+  transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
 }))

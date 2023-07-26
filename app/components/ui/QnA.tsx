@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import ThumbsUp from './thumbsUp'
+import dayjs from 'dayjs'
 
 interface IProps {
   id: string
@@ -28,7 +29,7 @@ export default function QnA(props: IProps) {
         <div className="flex flex-col">
           <span className="font-semibold text-blue-600">{maskedID}</span>
           <span className="text-sm text-gray-400">
-            {props.updated_q.toLocaleDateString()}
+            {dayjs(props.updated_q).format('YYYY.MM.DD')}
           </span>
         </div>
         <div className="w-fit">
@@ -47,7 +48,7 @@ export default function QnA(props: IProps) {
         <div className="flex flex-col">
           <span className="font-semibold text-blue-600">판매자</span>
           <span className="text-sm text-gray-400">
-            {props.updated_a.toLocaleDateString()}
+            {dayjs(props.updated_a).format('YYYY.MM.DD')}
           </span>
         </div>
         <div className="w-fit">

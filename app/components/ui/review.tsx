@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import StarRating from './starRating'
 import ThumbsUp from './thumbsUp'
+import dayjs from 'dayjs'
 
 interface IProps {
   id: string
@@ -28,7 +29,7 @@ export default function Review(props: IProps) {
         <div className="flex flex-col">
           <span className="font-semibold text-blue-600">{maskedID}</span>
           <span className="text-sm text-gray-400">
-            {props.updated.toLocaleDateString()}
+            {dayjs(props.updated).format('YYYY.MM.DD')}
           </span>
         </div>
         <div className="w-24">
