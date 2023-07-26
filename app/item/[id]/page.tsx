@@ -77,7 +77,7 @@ export default function ItemPage() {
           break
       }
     },
-    { rootMargin: '-54px 0px 0px 0px', threshold: 0.3 }
+    { rootMargin: '-54px 0px 0px 0px' }
   )
 
   const totalPrice = useMemo(() => {

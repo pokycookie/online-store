@@ -11,14 +11,18 @@ export default function useTOC(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       if (!callback) return
 
+      // viewport내에 있는 element를 관리
       for (const entry of entries) {
         if (entry.isIntersecting) {
+          // 새로 들어온 element를 viewport set에 추가
           viewportREF.current.add(entry.target)
         } else {
+          // 빠져나간 element를 viewport set에서 제거
           viewportREF.current.delete(entry.target)
         }
       }
 
+      // viewport내에 있는 element 중 targets 순으로 가장 먼저인 element를 반환
       for (const target of targets) {
         if (!target.current) continue
         if (viewportREF.current.has(target.current)) {
@@ -26,24 +30,8 @@ export default function useTOC(
           break
         }
       }
-
-      //   const visibles: IntersectionObserverEntry[] = []
-      //   entries.forEach((entry) => {
-      //     if (entry.isIntersecting) visibles.push(entry)
-      //   })
-
-      //   console.log(visibles.map((e) => e.target))
-      //   loop: for (const target of targets) {
-      //     if (!target.current) continue
-      //     for (const element of visibles) {
-      //       if (element.target.id === target.current.id) {
-      //         callback(element, observer)
-      //         break loop
-      //       }
-      //     }
-      //   }
     },
-    [callback]
+    [callback, targets]
   )
 
   useEffect(() => {
@@ -55,8 +43,4 @@ export default function useTOC(
     }
     return () => observer.disconnect()
   }, [onIntersect, options, targets])
-
-  useEffect(() => {
-    console.log('useTOC ON')
-  }, [])
 }
