@@ -3,7 +3,7 @@
 import Carousel from '@/components/ui/carousel'
 import Image from 'next/image'
 import Dropdown from '@/components/ui/dropdown'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faAngleDown,
@@ -28,6 +28,8 @@ import StarRating from '@/components/ui/starRating'
 import Review from '@/components/ui/review'
 import Pagination from '@/components/ui/pagination'
 import QnA from '@/components/ui/QnA'
+import Table from '@/components/ui/table'
+import useTOC from '@/hooks/useTOC'
 
 interface IItemOption {
   // label과 price는 따로 참조하도록 변경 예정
@@ -43,6 +45,41 @@ export default function ItemPage() {
   const [subHeader, setSubHeader] = useState(0)
   const [isExtended, setIsExtended] = useState(false)
 
+  const infoSectionREF = useRef<HTMLElement>(null)
+  const reviewSectionREF = useRef<HTMLElement>(null)
+  const qnaSectionREF = useRef<HTMLElement>(null)
+  const shippingSectionREF = useRef<HTMLElement>(null)
+
+  const refTargets = [
+    infoSectionREF,
+    reviewSectionREF,
+    qnaSectionREF,
+    shippingSectionREF,
+  ]
+
+  useTOC(
+    refTargets,
+    (target) => {
+      switch (target) {
+        case infoSectionREF.current:
+          setSubHeader(0)
+          break
+        case reviewSectionREF.current:
+          setSubHeader(1)
+          break
+        case qnaSectionREF.current:
+          setSubHeader(2)
+          break
+        case shippingSectionREF.current:
+          setSubHeader(3)
+          break
+        default:
+          break
+      }
+    },
+    { rootMargin: '-54px 0px 0px 0px', threshold: 0.3 }
+  )
+
   const totalPrice = useMemo(() => {
     let acc = 0
     for (const key in options) {
@@ -53,12 +90,10 @@ export default function ItemPage() {
 
   // value만 사용하도록 이후 수정
   const optionHandler = (label: string, value: string, price: number) => {
-    console.log('click')
     setOptions((prev) => {
       const tmp = { ...prev }
       const count = options[value] ? options[value].count + 1 : 1
       tmp[value] = { label, count, price }
-      console.log(tmp)
       return tmp
     })
   }
@@ -78,6 +113,27 @@ export default function ItemPage() {
       tmp[value].count = count
       return tmp
     })
+  }
+
+  const subHeaderHandler = (i: number) => {
+    let top = 0
+    switch (i) {
+      case 0:
+        top = (infoSectionREF.current?.offsetTop ?? 0) - 54 - 10
+        break
+      case 1:
+        top = (reviewSectionREF.current?.offsetTop ?? 0) - 54 - 10
+        break
+      case 2:
+        top = (qnaSectionREF.current?.offsetTop ?? 0) - 54 - 10
+        break
+      case 3:
+        top = (shippingSectionREF.current?.offsetTop ?? 0) - 54 - 10
+        break
+      default:
+        break
+    }
+    if (top > 0) window.scrollTo({ top, behavior: 'smooth' })
   }
 
   return (
@@ -196,6 +252,7 @@ export default function ItemPage() {
                 key={i}
                 selected={subHeader === i}
                 className="w-full"
+                onClick={() => subHeaderHandler(i)}
               >
                 {e}
               </SubHeaderBtn>
@@ -203,7 +260,7 @@ export default function ItemPage() {
           })}
         </div>
         {/* 상품정보 Section */}
-        <section className="w-full">
+        <section className="w-full" id="infoSection" ref={infoSectionREF}>
           <motion.div
             className="w-full overflow-hidden"
             initial={{ height: '1200px' }}
@@ -231,7 +288,11 @@ export default function ItemPage() {
           </button>
         </section>
         {/* 상품리뷰 Section */}
-        <section className="w-full mt-5">
+        <section
+          className="w-full mt-5"
+          id="reviewSection"
+          ref={reviewSectionREF}
+        >
           {/* 상품리뷰 title */}
           <div className="flex items-start justify-between w-full pt-5 border-t-2 border-blue-600">
             <div>
@@ -269,7 +330,7 @@ export default function ItemPage() {
           <Pagination />
         </section>
         {/* 상품문의 Section */}
-        <section className="w-full mt-5">
+        <section className="w-full mt-5" id="qnaSection" ref={qnaSectionREF}>
           <div className="flex items-start justify-between w-full pt-5 border-t-2 border-blue-600">
             <div>
               <h4 className="text-2xl font-bold">상품문의</h4>
@@ -307,11 +368,27 @@ export default function ItemPage() {
           </ul>
           <Pagination />
         </section>
-        {/* 배송/교환/반품 안내 */}
-        <section>
+        {/* 배송/교환/반품 안내 Section */}
+        <section
+          className="w-full mt-5"
+          id="shippingSection"
+          ref={shippingSectionREF}
+        >
           <div className="flex items-start justify-between w-full pt-5 border-t-2 border-blue-600">
             <h4 className="text-2xl font-bold">배송/교환/반품 안내</h4>
           </div>
+          <section>
+            <h5 className="mt-8 mb-4 ml-1 font-semibold">배송정보</h5>
+            <Table content={deliveryArr} />
+          </section>
+          <section>
+            <h5 className="mt-8 mb-4 ml-1 font-semibold">교환/반품 안내</h5>
+            <Table content={returnArr} />
+          </section>
+          <section>
+            <h5 className="mt-8 mb-4 ml-1 font-semibold">판매자정보</h5>
+            <Table content={supplyArr} />
+          </section>
         </section>
       </section>
     </main>
@@ -355,7 +432,7 @@ const reviewArr = [
   },
   {
     id: 'pokycookie',
-    updated: new Date(2022, 6, 24),
+    updated: new Date(2022, 6, 27),
     rate: 4,
     comment: '생각보다 별로인데요?\n다들 왜 좋다고 하는건지\n잘 모르겠네요',
     vote: 12,
@@ -365,8 +442,8 @@ const reviewArr = [
 const qnaArr = [
   {
     id: 'Cookie',
-    updated_q: new Date(2022, 6, 24),
-    updated_a: new Date(2022, 6, 25),
+    updated_q: new Date(2022, 6, 29),
+    updated_a: new Date(2022, 6, 30),
     q: '175cm 남자인데 사이즈 M으로 하면 작나요?',
     a: '안녕하세요 판매자입니다.\n같은 신장 내에서도 맞는 사이즈가 서로 다를 수 있습니다.\n따라서 고객님의 체형에 맞는 사이즈를 제시해드리지 못하는 점 양해바랍니다.',
     vote: 3,
@@ -378,5 +455,77 @@ const qnaArr = [
     q: '이거 옷에 뭐 묻어서 왔는데요?',
     a: '안녕하세요 판매자입니다.\n먼저 오염된 상품이 전달된 점 사과의 말씀 드립니다.\n교환/반품의 경우 따로 교환/반품 페이지를 이용해주시면 감사하겠습니다.',
     vote: 1,
+  },
+]
+
+const deliveryArr = [
+  {
+    head: '배송비',
+    data: [
+      '기본 배송료 3,000원',
+      '19,800원 이상 구매시 무료배송',
+      '도서산간 지역 추가비용',
+    ],
+  },
+  {
+    head: '배송업체',
+    data: ['XX택배'],
+  },
+  {
+    head: '묵음배송 여부',
+    data: ['가능'],
+  },
+  {
+    head: '배송기간',
+    data: [
+      '주문 및 결제 완료 후 2~3일',
+      '도서 산간 지역 등은 1~2일 추가 소요될 수 있음',
+      '천재지변, 물량 수급 변동 등 예외적인 사유 발생 시, 다소 지연될 수 있음',
+    ],
+  },
+]
+
+const returnArr = [
+  {
+    head: '교환/반품 비용',
+    data: [
+      '반품배송비 3,000원',
+      '교환배송비 6,000원',
+      '제품에 문제가 있는 경우 배송비는 판매자가 부담',
+    ],
+  },
+  {
+    head: '교환/반품 신청 기준일',
+    data: [
+      '단순변심에 의한 교환/반품은 제품 수령 후 일주일 이내',
+      '상품의 내용이 표시/광고와 다른 경우 수령 후 3개월 이내',
+    ],
+  },
+]
+
+const supplyArr = [
+  {
+    head: '판매자명',
+    data: ['XXX의류'],
+  },
+  {
+    head: '상호/대표자',
+    data: ['XXX의류/XXX'],
+  },
+  {
+    head: '상호자번호',
+    data: ['000-00-00000'],
+  },
+  {
+    head: '연락처',
+    data: ['000-0000-0000'],
+  },
+  {
+    head: 'e-mail',
+    data: ['XXX@naver.com'],
+  },
+  {
+    head: '사업장 소재지',
+    data: ['서울특별시 XXX XXX 000번길 00'],
   },
 ]
