@@ -3,7 +3,7 @@
 import Carousel from '@/components/ui/carousel'
 import Image from 'next/image'
 import Dropdown from '@/components/ui/dropdown'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faAngleDown,
