@@ -1,5 +1,3 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ChangeEvent } from 'react'
 
 interface IProps {
@@ -12,6 +10,7 @@ interface IProps {
   }[]
   check: boolean
   onCheck?: (checked: boolean) => void
+  readOnly?: boolean
 }
 
 export default function CartList(props: IProps) {
@@ -23,12 +22,14 @@ export default function CartList(props: IProps) {
     <li className="pt-3 pb-3">
       <div>
         <label className="flex gap-2">
-          <input
-            type="checkbox"
-            className="accent-blue-600"
-            checked={props.check}
-            onChange={checkHandler}
-          />
+          {props.readOnly ? null : (
+            <input
+              type="checkbox"
+              className="accent-blue-600"
+              checked={props.check}
+              onChange={checkHandler}
+            />
+          )}
           <h3 className="font-semibold text-gray-700">{props.name}</h3>
         </label>
       </div>
@@ -50,9 +51,11 @@ export default function CartList(props: IProps) {
                 <p className="flex items-center justify-end w-32">
                   {(e.price * e.count).toLocaleString()}원
                 </p>
-                <button className="p-1 pl-2 pr-2 text-xs border border-blue-600 rounded-sm hover:text-white hover:bg-blue-600">
-                  삭제
-                </button>
+                {props.readOnly ? null : (
+                  <button className="p-1 pl-2 pr-2 text-xs border border-blue-600 rounded-sm hover:text-white hover:bg-blue-600">
+                    삭제
+                  </button>
+                )}
               </div>
             </li>
           )

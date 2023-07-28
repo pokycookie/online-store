@@ -2,6 +2,7 @@
 
 import CartList from '@/components/section/shoppingCart/cartList'
 import cartArrData from '@mock/cart.json'
+import Link from 'next/link'
 import { ChangeEvent, useState } from 'react'
 
 const cartArr = cartArrData.data
@@ -28,9 +29,11 @@ export default function CartPage() {
   }
 
   return (
-    <main className="p-8">
-      <h1 className="mb-5 text-2xl font-bold">장바구니</h1>
-      <section className="mb-5">
+    <main className="flex flex-col items-center p-8">
+      <h1 className="w-full pb-3 mb-5 text-2xl font-semibold border-b-4 border-blue-600">
+        장바구니
+      </h1>
+      <section className="w-full mb-5">
         <div className="flex items-center justify-between pt-2 pb-2 border-b border-blue-600">
           <div className="text-sm">
             <label className="flex items-center justify-center gap-2">
@@ -64,9 +67,26 @@ export default function CartPage() {
         </ul>
         <div className="mt-3 border-b border-blue-600"></div>
       </section>
-      <button className="w-full h-12 text-white bg-blue-600 rounded-md hover:bg-blue-500">
+      <div className="flex flex-col items-end w-full gap-2 pt-3 pb-3">
+        <span className="flex items-center justify-between w-full gap-2 text-sm text-gray-500">
+          총 상품가격
+          <strong className="text-lg text-blue-600">123,456원</strong>
+        </span>
+        <span className="flex items-center justify-between w-full gap-2 text-sm text-gray-500">
+          배송비<strong className="text-lg text-blue-600">0원</strong>
+        </span>
+        <div className="w-full mt-1 mb-1 border-b border-gray-400"></div>
+        <span className="flex items-center justify-between w-full gap-2 text-sm text-gray-500">
+          총 주문금액
+          <strong className="text-lg text-blue-600">123,456원</strong>
+        </span>
+      </div>
+      <Link
+        href="/cart/checkout"
+        className="flex items-center justify-center w-full h-12 max-w-md mt-5 text-white bg-blue-600 rounded-md hover:bg-blue-500"
+      >
         구매하기
-      </button>
+      </Link>
     </main>
   )
 }
