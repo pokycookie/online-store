@@ -16,6 +16,18 @@ export default function Header() {
       <div className="flex gap-4">
         <Link
           className="text-sm font-medium cursor-pointer whitespace-nowrap hover:text-blue-600"
+          href="/mypage/orderlist"
+        >
+          마이페이지
+        </Link>
+        <Link
+          className="text-sm font-medium cursor-pointer whitespace-nowrap hover:text-blue-600"
+          href="/cart"
+        >
+          장바구니
+        </Link>
+        {/* <Link
+          className="text-sm font-medium cursor-pointer whitespace-nowrap hover:text-blue-600"
           href="/login"
         >
           로그인
@@ -25,7 +37,7 @@ export default function Header() {
           href="/signup"
         >
           회원가입
-        </Link>
+        </Link> */}
       </div>
     </header>
   )
