@@ -14,7 +14,7 @@ import dayjs from 'dayjs'
 export default function OrderListPage() {
   return (
     <>
-      <section className="flex gap-2 mb-5">
+      <section className="flex flex-wrap gap-2 mb-5">
         {Array(6)
           .fill(0)
           .map((_, i) => {
@@ -54,28 +54,28 @@ export default function OrderListPage() {
                 />
               </ul>
               <div className="flex items-center gap-3 pt-3 border-t">
-                <button className="flex items-center justify-center w-full h-12 gap-2 text-gray-600 border border-gray-400 rounded-md hover:text-blue-600 hover:border-blue-600">
+                <button className="flex items-center justify-center h-12 gap-2 text-gray-600 border border-gray-400 rounded-md grow hover:text-blue-600 hover:border-blue-600">
                   <FontAwesomeIcon icon={faCartShopping} />
                   장바구니
                 </button>
                 {e.arrived ? (
                   <>
-                    <button className="flex items-center justify-center w-full h-12 gap-2 text-gray-600 border border-gray-400 rounded-md hover:text-blue-600 hover:border-blue-600">
+                    <button className="flex items-center justify-center h-12 gap-2 pl-1 pr-1 text-gray-600 border border-gray-400 rounded-md grow shrink-0 hover:text-blue-600 hover:border-blue-600">
                       <FontAwesomeIcon icon={faRightLeft} />
                       교환/반품 신청
                     </button>
-                    <button className="flex items-center justify-center w-full h-12 gap-2 text-gray-600 border border-gray-400 rounded-md hover:text-blue-600 hover:border-blue-600">
+                    <button className="flex items-center justify-center h-12 gap-2 pl-1 pr-1 text-gray-600 border border-gray-400 rounded-md grow shrink-0 hover:text-blue-600 hover:border-blue-600">
                       <FontAwesomeIcon icon={faComment} />
                       리뷰 작성
                     </button>
                   </>
                 ) : (
                   <>
-                    <button className="flex items-center justify-center w-full h-12 gap-2 text-gray-600 border border-gray-400 rounded-md hover:text-blue-600 hover:border-blue-600">
+                    <button className="flex items-center justify-center h-12 gap-2 pl-1 pr-1 text-gray-600 border border-gray-400 rounded-md grow shrink-0 hover:text-blue-600 hover:border-blue-600">
                       <FontAwesomeIcon icon={faTruck} />
                       배송조회
                     </button>
-                    <button className="flex items-center justify-center w-full h-12 gap-2 text-gray-600 border border-gray-400 rounded-md hover:text-blue-600 hover:border-blue-600">
+                    <button className="flex items-center justify-center h-12 gap-2 pl-1 pr-1 text-gray-600 border border-gray-400 rounded-md grow shrink-0 hover:text-blue-600 hover:border-blue-600">
                       <FontAwesomeIcon icon={faComment} />
                       판매자 문의
                     </button>
