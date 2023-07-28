@@ -13,7 +13,7 @@ import dayjs from 'dayjs'
 
 export default function OrderListPage() {
   return (
-    <div>
+    <>
       <section className="flex gap-2 mb-5">
         {Array(6)
           .fill(0)
@@ -87,6 +87,6 @@ export default function OrderListPage() {
         })}
       </ul>
       <Pagination />
-    </div>
+    </>
   )
 }
