@@ -44,51 +44,55 @@ export default function SignUp() {
         <h2 className="w-full pl-1 mt-3 mb-3 text-base font-semibold text-left">
           로그인 정보
         </h2>
-        <LabelInput
-          type="text"
-          lable="아이디"
-          value={id}
-          onChange={(e) => setID(e.target.value)}
-          info={validateInput.id(id)}
-        />
-        <LabelInput
-          type="password"
-          lable="비밀번호"
-          value={pw}
-          onChange={(e) => setPW(e.target.value)}
-          info={validateInput.pw(pw)}
-        />
-        <LabelInput
-          type="password"
-          lable="비밀번호 확인"
-          value={checkPw}
-          onChange={(e) => setCheckPW(e.target.value)}
-          info={validateInput.pw2(checkPw, pw)}
-        />
+        <div className="flex flex-col w-full gap-3 mb-3">
+          <LabelInput
+            type="text"
+            lable="아이디"
+            value={id}
+            onChange={(e) => setID(e.target.value)}
+            info={validateInput.id(id)}
+          />
+          <LabelInput
+            type="password"
+            lable="비밀번호"
+            value={pw}
+            onChange={(e) => setPW(e.target.value)}
+            info={validateInput.pw(pw)}
+          />
+          <LabelInput
+            type="password"
+            lable="비밀번호 확인"
+            value={checkPw}
+            onChange={(e) => setCheckPW(e.target.value)}
+            info={validateInput.pw2(checkPw, pw)}
+          />
+        </div>
         <h2 className="w-full pl-1 mt-3 mb-3 text-base font-semibold text-left">
           회원 정보
         </h2>
-        <LabelInput
-          type="text"
-          lable="이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          info={validateInput.name(name)}
-        />
-        <LabelInput
-          type="text"
-          lable="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          info={validateInput.email(email)}
-        />
-        <LabelInput
-          type="text"
-          lable="휴대폰"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          info={validateInput.phone(phone)}
-        />
+        <div className="flex flex-col w-full gap-3 mb-3">
+          <LabelInput
+            type="text"
+            lable="이름"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            info={validateInput.name(name)}
+          />
+          <LabelInput
+            type="text"
+            lable="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            info={validateInput.email(email)}
+          />
+          <LabelInput
+            type="text"
+            lable="휴대폰"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            info={validateInput.phone(phone)}
+          />
+        </div>
         <h2 className="w-full pl-1 mt-3 mb-3 text-base font-semibold text-left">
           약관
         </h2>

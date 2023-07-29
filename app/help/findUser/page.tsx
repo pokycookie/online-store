@@ -37,27 +37,29 @@ export default function FindUser() {
             비밀번호 찾기
           </TypeButton>
         </div>
-        <LabelInput
-          type="text"
-          lable="이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <LabelInput
-          type="text"
-          lable="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          info={validateInput.email(email)}
-        />
-        {type === 1 ? (
+        <div className="flex flex-col w-full gap-3 mb-3">
           <LabelInput
             type="text"
-            lable="아이디"
-            value={id}
-            onChange={(e) => setID(e.target.value)}
+            lable="이름"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-        ) : null}
+          <LabelInput
+            type="text"
+            lable="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            info={validateInput.email(email)}
+          />
+          {type === 1 ? (
+            <LabelInput
+              type="text"
+              lable="아이디"
+              value={id}
+              onChange={(e) => setID(e.target.value)}
+            />
+          ) : null}
+        </div>
         <CertSendButton
           sended={certSended}
           onClick={() => setCertSended(true)}
@@ -67,12 +69,14 @@ export default function FindUser() {
         </CertSendButton>
         {certSended ? (
           <>
-            <LabelInput
-              type="text"
-              lable="인증코드"
-              value={certCode}
-              onChange={(e) => setCertCode(e.target.value)}
-            />
+            <div className="flex flex-col w-full gap-3 mb-3">
+              <LabelInput
+                type="text"
+                lable="인증코드"
+                value={certCode}
+                onChange={(e) => setCertCode(e.target.value)}
+              />
+            </div>
             <button
               onClick={() => setCertSended(true)}
               className="w-full h-12 mb-10 text-white bg-blue-600 rounded-md hover:bg-blue-500"

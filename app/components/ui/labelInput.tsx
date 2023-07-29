@@ -32,7 +32,7 @@ export default function LabelInput(props: IProps) {
   }, [])
 
   return (
-    <div className="w-full mb-3 ">
+    <div className="w-full">
       <div className="relative">
         <motion.label
           className="absolute left-3"

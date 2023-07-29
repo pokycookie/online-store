@@ -19,18 +19,20 @@ export default function Login() {
     <main className="flex justify-center w-full p-8">
       <div className="flex flex-col items-center w-full max-w-md">
         <h1 className="mb-5 text-lg font-semibold">로그인</h1>
-        <LabelInput
-          type="text"
-          lable="아이디"
-          value={id}
-          onChange={(e) => setID(e.target.value)}
-        />
-        <LabelInput
-          type="password"
-          lable="비밀번호"
-          value={pw}
-          onChange={(e) => setPW(e.target.value)}
-        />
+        <div className="flex flex-col w-full gap-3 mb-3">
+          <LabelInput
+            type="text"
+            lable="아이디"
+            value={id}
+            onChange={(e) => setID(e.target.value)}
+          />
+          <LabelInput
+            type="password"
+            lable="비밀번호"
+            value={pw}
+            onChange={(e) => setPW(e.target.value)}
+          />
+        </div>
         <div className="flex justify-between w-full pl-1 pr-1 mb-3">
           <label className="flex gap-2 text-sm">
             <input type="checkbox" title="text" />
