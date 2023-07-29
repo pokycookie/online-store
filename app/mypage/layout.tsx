@@ -52,7 +52,6 @@ const linkArr = [
     regex: /^\/mypage\/wishlist.*$/,
   },
   { title: '쿠폰', href: '/mypage/coupon', regex: /^\/mypage\/coupon.*$/ },
-  { title: '문의하기', href: '/contact', regex: /^\/contact.*$/ },
   {
     title: '개인정보확인/수정',
     href: '/mypage/userEdit',

@@ -8,7 +8,7 @@ interface IProps {
 
 export default function Coupon(props: IProps) {
   return (
-    <div className="flex overflow-hidden border rounded-md select-none h-44">
+    <div className="flex max-w-xl overflow-hidden border rounded-md select-none h-44">
       <div className="p-4 bg-gray-100 grow">
         <h3 className="mb-1 text-xl font-bold text-blue-600">{props.title}</h3>
         <p className="text-sm text-gray-500">
