@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "title": "집",
+      "default": true,
+      "address": "부산광역시 XX구 XX동 XXXX-X",
+      "phone": "010 XXXX XXXX",
+      "memo": "문 앞"
+    },
+    {
+      "title": "회사",
+      "default": false,
+      "address": "서울특별시 XX구 XXXX로 XX길",
+      "phone": "010 XXXX XXXX",
+      "memo": "경비실"
+    },
+    {
+      "title": "본가",
+      "default": false,
+      "address": "경상남도 XX시 XX동 XXXXX로 XX-X",
+      "phone": "010 XXXX XXXX",
+      "memo": "직접 받고 부재 시 경비실"
+    }
+  ],
+  "default": 0
+}
